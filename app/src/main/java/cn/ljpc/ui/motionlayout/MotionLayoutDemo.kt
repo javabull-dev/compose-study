@@ -1,4 +1,4 @@
-package cn.ljpc.ui.layout
+package cn.ljpc.ui.motionlayout
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
