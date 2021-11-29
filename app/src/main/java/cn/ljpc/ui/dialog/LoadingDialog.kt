@@ -30,7 +30,7 @@ fun ShowLoadingDialog(
     AnimatedVisibility(visible = visible) {
         Dialog(
             onDismissRequest = { },
-            DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
+            properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
         ) {
             Box(
                 contentAlignment = Alignment.Center,
