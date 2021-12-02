@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/gmail" />
             <option value="$PROJECT_DIR$/instagram" />
+            <option value="$PROJECT_DIR$/swipeable" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

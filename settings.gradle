@@ -16,3 +16,4 @@ rootProject.name = "compose-study"
 include ':app'
 include ':instagram'
 include ':gmail'
+include ':swipeable'
