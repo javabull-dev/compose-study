@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">輔佐用</string>
     <string name="button_txt">點擊</string>
+    <string name="validate_text">合法的字符</string>
 </resources>

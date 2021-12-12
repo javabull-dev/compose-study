@@ -1,4 +1,4 @@
-package cn.ljpc.effect
+package cn.ljpc.modal
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,27 +6,38 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import cn.ljpc.effect.ui.MainContent3
-import cn.ljpc.effect.ui.theme.ComposestudyTheme
-
+import androidx.compose.ui.tooling.preview.Preview
+import cn.ljpc.modal.ui.theme.ComposestudyTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ComposestudyTheme {
+                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.surface
+                    color = MaterialTheme.colors.background
                 ) {
-//                    SideEffect {
-//                        Log.d("", "Surface --- SideEffect终于被调用了")
-//                    }
-                    MainContent3()
+                    Greeting("Android")
                 }
             }
         }
     }
 }
 
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    ComposestudyTheme {
+        Greeting("Android")
+    }
+}
