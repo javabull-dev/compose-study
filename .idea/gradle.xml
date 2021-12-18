@@ -13,9 +13,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/coroutinescop" />
             <option value="$PROJECT_DIR$/effect" />
             <option value="$PROJECT_DIR$/gmail" />
             <option value="$PROJECT_DIR$/instagram" />
+            <option value="$PROJECT_DIR$/lockscreenmessageprompt" />
+            <option value="$PROJECT_DIR$/lockscreenmessageprompt2" />
+            <option value="$PROJECT_DIR$/lockscreenmessageprompt3" />
             <option value="$PROJECT_DIR$/modal-bottom-sheet-layout" />
             <option value="$PROJECT_DIR$/swipeable" />
             <option value="$PROJECT_DIR$/webview" />
