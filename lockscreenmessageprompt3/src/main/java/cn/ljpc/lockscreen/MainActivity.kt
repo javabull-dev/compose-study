@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -37,7 +38,7 @@ import java.util.*
 
 class MainActivity : ComponentActivity() {
 
-    companion object{
+    companion object {
         val TAG = MainActivity::class.simpleName
     }
 
@@ -147,7 +148,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainContent(mainViewModel: MainViewModel) {
     val context = LocalContext.current
-    Log.d(TAG, "当前的Avtivity# $context")
+    Log.d(TAG, "当前的Activity# $context")
+    fun openNotification() {
+        val localIntent = Intent().apply {
+            //判断API，跳转到应用通知管理页面
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//8.0及以上
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                action = "android.settings.APPLICATION_DETAILS_SETTINGS"
+                data = Uri.fromParts("package", context.packageName, null)
+            } else {
+                action = "android.settings.APP_NOTIFICATION_SETTINGS"
+                putExtra("app_package", context.packageName)
+                putExtra("app_uid", context.applicationInfo.uid)
+            }
+        }
+        context.startActivity(localIntent)
+    }
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -158,5 +175,9 @@ fun MainContent(mainViewModel: MainViewModel) {
             Text(text = "5s发送通知")
         }
         Text(text = "$context")
+        Button(onClick = { openNotification() }) {
+            Text(text = "去打开通知")
+        }
+        Text(text = "是否一打开通知？${NotificationManagerCompat.from(context).areNotificationsEnabled()}")
     }
 }
