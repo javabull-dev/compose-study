@@ -13,6 +13,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/constraintlayout" />
             <option value="$PROJECT_DIR$/coroutinescop" />
             <option value="$PROJECT_DIR$/effect" />
             <option value="$PROJECT_DIR$/gmail" />
