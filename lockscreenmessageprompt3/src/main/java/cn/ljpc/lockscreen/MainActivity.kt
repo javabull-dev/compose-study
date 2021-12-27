@@ -133,6 +133,12 @@ class MainActivity : ComponentActivity() {
 //            .setNumber(10) //设置badge
             .build()
 
+        val vivoiIntent = Intent()
+        vivoiIntent.action = "launcher.action.CHANGE_APPLICATION_NOTIFICATION_NUM"
+//        vivoiIntent.putExtra("packageName", "com.android.xxxx")
+//        vivoiIntent.putExtra("className", "com.android.xxxx.Mainxxxx")
+        sendBroadcast(vivoiIntent)
+
         Log.d(TAG, "id=$notificationId")
         with(NotificationManagerCompat.from(this)) {
             notify(notificationId, notification1)
