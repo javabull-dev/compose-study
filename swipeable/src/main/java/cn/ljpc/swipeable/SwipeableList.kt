@@ -1,7 +1,7 @@
 package cn.ljpc.swipeable
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
+import android.util.Log
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,36 +28,23 @@ enum class SwipeState {
     SHOW_ACTION, NONE
 }
 
-@Composable
-@Preview(showBackground = true)
-fun SwipeableList() {
-    val listState = remember {
-        mutableListOf(1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18)
-    }
-
-    val btnLen = BtnLen(40f, 2, LocalDensity.current.density)
-    LazyColumn {
-        items(listState) { item ->
-            Box {
-                Background(
-                    btnLen = btnLen,
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
-                )
-                Foreground(item, btnLen = btnLen)
-            }
-        }
-    }
-}
-
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Background(modifier: Modifier, btnLen: BtnLen) {
-    Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
+    Row(modifier = modifier
+        .clickable {
+            Log.d("#Background", "Row被点击了")
+        }) {
         IconButton(
-            onClick = {},
+            onClick = {
+                Log.d("#Background", "delete被点击了")
+            },
             modifier = Modifier
                 .background(color = Color.Red)
                 .width(btnLen.width.dp)
+                .combinedClickable {
+                    Log.d("#Background", "delete被点击了")
+                }
         ) {
             Icon(
                 imageVector = Icons.Default.Delete,
@@ -66,10 +53,15 @@ fun Background(modifier: Modifier, btnLen: BtnLen) {
             )
         }
         IconButton(
-            onClick = {},
+            onClick = {
+                Log.d("#Background", "people被点击了")
+            },
             modifier = Modifier
                 .background(color = Color.Blue)
                 .width(btnLen.width.dp)
+                .combinedClickable {
+                    Log.d("#Background", "people被点击了")
+                }
         ) {
             Icon(
                 imageVector = Icons.Default.AccountBox,
@@ -101,12 +93,19 @@ fun Foreground(item: Int, btnLen: BtnLen) {
             .swipeable(//控制是否可被滑动，提供state给外部使用
                 state = state,
                 anchors = swipeAnchors,
-                thresholds = { _, _ -> FractionalThreshold(0.5f) },//可用可不用
+                thresholds = { _, _ -> FractionalThreshold(0.5f) },
                 orientation = Orientation.Horizontal
             )
-            .offset { IntOffset(state.offset.value.roundToInt(), 0) }//是否可看到background，取决于offset偏移量
+            .offset { IntOffset(state.offset.value.roundToInt(), 0) }
             .background(MaterialTheme.colors.background)
+            .clickable {
+                Log.d("#Foreground", "Foreground被点击了")
+            }
     ) {
-        Text("this is $item")
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            text = "this is $item"
+        )
     }
 }

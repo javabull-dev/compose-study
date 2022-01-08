@@ -22,6 +22,8 @@
             <option value="$PROJECT_DIR$/lockscreenmessageprompt2" />
             <option value="$PROJECT_DIR$/lockscreenmessageprompt3" />
             <option value="$PROJECT_DIR$/modal-bottom-sheet-layout" />
+            <option value="$PROJECT_DIR$/mutable" />
+            <option value="$PROJECT_DIR$/permission" />
             <option value="$PROJECT_DIR$/swipeable" />
             <option value="$PROJECT_DIR$/webview" />
           </set>
